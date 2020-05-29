@@ -1,7 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 import AddNewColor from './comps/AddNewColor';
 import ColorFlipper from './comps/ColorFlipper';
+
+const Container = styled.div`
+background-color: ${props => props.actColor};
+`
 
 class App extends React.Component {
   constructor(props){
@@ -32,7 +36,7 @@ class App extends React.Component {
     const {allColors, newBg} = this.state;
     //console.log("In render: "+newBg);
     return (
-      <div>
+      <Container actColor={newBg}>
         <AddNewColor
           addColor={this.addColor}
           allColors={allColors}
@@ -49,7 +53,7 @@ class App extends React.Component {
             )}
           </ul>)
         }
-      </div>
+      </Container>
     );
   }
 }
