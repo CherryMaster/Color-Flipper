@@ -9,7 +9,7 @@ class AddNewColor extends React.Component {
   }
 
   validInput = () => {
-    const regex = /#[a-f0-9]{6}/i;
+    const regex = /^#[a-f0-9]{6}$/i;
     return regex;
   }
 
@@ -23,9 +23,9 @@ class AddNewColor extends React.Component {
     const { addColor, allColors } = this.props;
     const { newColor } = this.state;
 
-    if (allColors.indexOf(newColor) === -1 && newColor.match(this.validInput())) {
-      addColor(newColor);
-    }
+  if (allColors.indexOf(newColor.toLowerCase()) === -1 && allColors.indexOf(newColor.toUpperCase())=== -1 && newColor.match(this.validInput())) {
+    addColor(newColor);
+  }
 
     this.setState({
       newColor: ''

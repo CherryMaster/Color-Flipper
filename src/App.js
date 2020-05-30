@@ -5,6 +5,17 @@ import ColorFlipper from './comps/ColorFlipper';
 
 const Container = styled.div`
 background-color: ${props => props.actColor};
+width: 50vw;
+height: 50vh;
+margin: 25vh 0 0 25vw;
+border: 5px ridge red;
+display: flex;
+`
+const AppHolder = styled.div`
+
+`
+const ListOfColors = styled.div`
+
 `
 
 class App extends React.Component {
@@ -37,6 +48,7 @@ class App extends React.Component {
     //console.log("In render: "+newBg);
     return (
       <Container actColor={newBg}>
+        <AppHolder>
         <AddNewColor
           addColor={this.addColor}
           allColors={allColors}
@@ -46,6 +58,8 @@ class App extends React.Component {
           getRandomNumber={this.getRandomNumber}
           setNewColor={this.setNewColor}
         />
+        </AppHolder>
+        <ListOfColors>
         {
           allColors.length>0 && ( <ul>
             {allColors.map(color =>
@@ -53,6 +67,7 @@ class App extends React.Component {
             )}
           </ul>)
         }
+        </ListOfColors>
       </Container>
     );
   }
